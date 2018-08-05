@@ -1,0 +1,23 @@
+{{post.date_created}}<br />
+{{post.title}}<br />
+{% if post.image %}
+	<img src="{{MEDIA_URL}}{{post.image.url}}" style="width: 300px; height: 300px;" /><br/>
+{% endif %}
+{{post.text}}<br />
+Обновлено {{post.update}} <hr><br />
+<h4>Комментарии</h4>
+{% for comm in comment %}
+{{comm.user}} <br>
+{{comm.text}} <br><br>
+{%endfor%}
+{% if user.is_active %}
+<p>
+	<form action="" method="post">
+		{%csrf_token%}
+		{{form}}
+		<input type="submit" value="Отправить">
+	</form>
+</p>
+{% else %}
+<p> Чтобы оставить комментарий, войдите на сайт <p>
+{% endif %}

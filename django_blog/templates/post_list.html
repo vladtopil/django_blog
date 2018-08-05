@@ -1,0 +1,9 @@
+{% load static %}
+{% for post in posts %}
+{{post.create}}<br />
+	<a href="{% url 'post:post_single' pk=post.id %}">{{post.title}}</a><br />
+{% if post.image %}
+	<img src="{{post.image.url}}" style="width: 300px; height: 300px;" /><br/>
+{% endif %}
+	{{post.text}}<hr />
+{% endfor %}

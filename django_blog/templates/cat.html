@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+
+  <title>Категории</title>
+  <meta name="description" content="">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Template Basic Images Start -->
+  <meta property="og:image" content="path/to/image.jpg">
+  <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
+  
+  <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static '/css/style.css' %}">
+
+  <!-- Custom Browsers Color Start -->
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#000">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#000">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="#000">
+  <!-- Custom Browsers Color End -->
+
+</head>
+
+<body>
+
+  <!-- Custom HTML -->
+  <header class="header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand">Блог</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+        <a class="nav-link" href="{% url 'post:post_list' %}">Главная <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <form method="get" action="/search-results/" class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" name="q" placeholder="Поиск" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Найти</button>
+      </form>
+      </div>
+    </nav>
+    <nav class="main-nav">
+      <div class="main-nav__inner">
+      {% for category in categories %}
+        <a href="{% url 'post:category' slug=category.slug %}">{{ category.title }}</a>
+      {% endfor %}
+      </div>
+    </nav>
+  </header>
+  <main class="content content--pd">
+    <div class="def-container">
+      <section class="postblock">
+        <h2 class="postblock__heading">Публикации категории "{{ category.title }}" </h2>
+        <div class="postblock__posts">
+        {% for post in posts %}
+          <div class="postblock__item one-post">
+            <a href="{% url 'post:post_single' pk=post.pk %}" class="one-post__img">
+              <div>
+              {% if post.image %}
+                <img src="{{post.image.url}}" alt="office">
+              {% endif %}
+              </div>
+            </a>
+            <div class="one-post__content">
+              <h2 class="one-post__heading">
+                <a href="{% url 'post:post_single' pk=post.pk %}">{{post.title}}</a>
+              </h2>
+              <h5><a href = "{% url 'post:category' slug=post.category.slug %}"> {{ post.category.title }} </a></h5>
+
+              <p class="one-post__text">{% if post.text|length > 375  %}
+              {{ post.text|slice:":372"}}...
+              {% else %}
+              {{post.text}}
+              {% endif %}
+              </p>
+              <div class="one-post__bottom">
+                <span class="one-post__date">{{post.date_created}}</span>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__copy">&copy; 2017 Топильницкий Владислав</p>
+    </div>
+  </footer>
+  
+  <script src="{% static '/js/jquery-3.2.1.min.js' %}"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="{% static '/js/bootstrap.min.js' %}"></script>
+  <script src="{% static '/js/masonry.js' %}"></script>
+  <script src="{% static '/js/index.js' %}"></script>
+
+</body>
+</html>

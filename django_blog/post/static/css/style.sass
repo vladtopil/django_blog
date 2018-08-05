@@ -1,0 +1,253 @@
+.main-nav
+	background-color: #fafafa
+	border:
+		bottom: 1px solid #eee
+		top: 1px solid #eee
+	height: 50px
+	&__inner
+		max-width: 1200px
+		padding:
+			left: 15px
+			right: 15px
+		overflow-y: auto
+		display: flex
+		&::-webkit-scrollbar
+    		display: none
+		a
+			display: inline-block
+			line-height: 50px
+			font-size: 15px
+			color: #333
+			&:hover
+				text-decoration: none
+			& + a
+				margin-left: 15px
+				@media (min-width: 1200px)
+					margin-left: 25px
+.heroblock
+	padding:
+		top: 50px
+		bottom: 50px
+	@media (min-width: 1200px)
+		padding:
+			top: 100px
+			bottom: 100px
+	background-position: center
+	background-repeat: no-repeat
+	background-size: cover
+	position: relative
+	margin-bottom: 25px
+	@media (min-width: 1200px)
+		margin-bottom: 50px
+	&:after
+		content: ""
+		position: absolute
+		top: 0
+		left: 0
+		bottom: 0
+		right: 0
+		background: rgba(#000, .3)
+	&__inner
+		max-width: 1200px
+		padding:
+			left: 15px
+			right: 15px
+		margin:
+			left: auto
+			right: auto
+		text-align: center
+		color: #fff
+		text-shadow: 0 1px 1px rgba(#000, .1)
+	&__heading
+		position: relative
+		z-index: 2
+		font-size: 24px
+		@media (min-width: 1200px)
+			font-size: 36px
+	&__subtitle
+		position: relative
+		z-index: 2
+		font:
+			size: 18px
+			weight: 300
+		@media (min-width: 1200px)
+			font-size: 24px
+	&__date
+		font:
+			size: 14px
+			weight: 300
+		display: block
+		margin-top: 2%
+		color: #fff
+
+.def-container
+	max-width: 1920px
+	padding:
+		left: 15px
+		right: 15px
+	margin:
+		left: auto
+		right: auto
+	&--static
+		max-width: 1200px
+
+body
+	background-color: #fafafa
+
+.content
+	background-color: #fff
+	&--pd
+		padding:
+			top: 25px
+			bottom: 25px
+		@media (min-width: 1200px)
+			padding:
+				top: 50px
+				bottom: 50px
+
+
+.postblock
+	& + .postblock
+		margin-top: 25px
+		@media (min-width: 1200px)
+			margin-top: 50px
+	&__heading
+		line-height: 1.4
+		font-size: 18px
+		@media (min-width: 1200px)
+			font-size: 24px
+	&__posts
+		border-top: 1px solid #eee
+		margin-top: 10px
+		padding:
+			top: 20px
+			bottom: 20px
+
+.one-post
+	width: 100%
+	@media (min-width: 768px)
+		width: calc(50% - 15px)
+	@media (min-width: 1200px)
+		width: calc(33.3333% - 15px)
+	@media (min-width: 1600px)
+		width: calc(20% - 15px)
+	@media (min-width: 1920px)
+		width: calc(15% - 15px)
+	margin-bottom: 15px
+	&__img
+		text-decoration: none
+		display: block
+		height: 0
+		line-height: 0
+		position: relative
+		padding-top: 70%
+		overflow: hidden
+		> div
+			width: 100%
+			height: 100%
+			top: 0
+			left: 0
+			position: absolute
+			z-index: 1
+			img
+				width: 100%
+				min-height: 100%
+				vertical-align: middle
+				max-width: 100%
+				border: 0
+		&:after
+			content: ""
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+			z-index: 2
+			background-color: rgba(#000, .5)
+			transition: opacity .2s ease-in
+			opacity: 0
+		&:hover
+			&:after
+				opacity: 1
+	&__content
+		border:
+			left: 1px solid #eee
+			right: 1px solid #eee
+			bottom: 1px solid #eee
+		padding: 10px 15px
+	&__heading
+		font-size: 18px
+		@media (min-width: 1200px)
+			font-size: 22px
+		color: #333
+		a
+			color: #333
+	&__text
+		display: block
+		font-size: 14px
+		@media (min-width: 1200px)
+			font-size: 15px
+	&__bottom
+		border-top: 1px solid #eee
+		padding-top: 5px
+	&__date
+		font:
+			size: 13px
+			weight: 300
+		color: #999
+
+.footer
+	background-color: #fafafa
+	border-top: 1px solid #eee
+	&__inner
+		max-width: 1200px
+		padding: 20px 15px 5px 15px
+		text-align: center
+		margin:
+			left: auto
+			right: auto
+	&__copy
+		display: block
+		font-size: 13px
+		color: #999
+
+.def-text-block
+	max-width: 768px
+	margin:
+		left: auto
+		right: auto
+	img
+		max-width: 100%
+		height: auto
+		margin:
+			top: 15px
+			bottom: 15px
+
+.search-res-heading
+	font-size: 18px
+	@media (min-width: 1200px)
+		font-size: 24px
+	span
+		font-weight: 300
+		color: #999
+
+.search-res
+	max-width: 920px
+	border-top: 1px solid #eee
+	padding-top: 10px
+	@media (min-width: 1200px)
+		padding-top: 25px
+	&__element
+		& + .search-res__element
+			margin-top: 25px
+		h2
+			font-size: 18px
+			@media (min-width: 1200px)
+				font-size: 24px
+			a
+				color: #121212
+		p
+			display: block
+			font-size: 14px
+			@media (min-width: 1200px)
+				font-size: 16px
